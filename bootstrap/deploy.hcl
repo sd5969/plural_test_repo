@@ -49,7 +49,7 @@ step "kube-init" {
     "bootstrap",
   ]
 
-  sha = "c3fd2f9846dd6016d39d500844450385f79716e3a5121f773514f0b7c3bdb75d"
+  sha = "f646f07e0e5cbd40ee3e1fc54965123cdd3baeaaeb51be86c2231cd754e49c80"
 }
 
 step "crds" {

@@ -8,7 +8,7 @@ step "terraform-init" {
   target  = "airflow/terraform"
   command = "terraform"
   args    = ["init"]
-  sha     = ""
+  sha     = "h1:7s4eWV6QyrBBtWn9o4GArRrcxtNm/3hdncVLV4jMAzM="
 }
 
 step "terraform" {
@@ -22,7 +22,7 @@ step "terraform" {
     "airflow",
   ]
 
-  sha = ""
+  sha = "h1:7s4eWV6QyrBBtWn9o4GArRrcxtNm/3hdncVLV4jMAzM="
 }
 
 step "kube-init" {
@@ -36,7 +36,7 @@ step "kube-init" {
     "airflow",
   ]
 
-  sha = ""
+  sha = "17ac6d98279333d38367f5c9966a9221a8e0ebba29cbfb85ec80e06f9b666ad4"
 }
 
 step "helm" {
@@ -50,5 +50,5 @@ step "helm" {
     "airflow",
   ]
 
-  sha = ""
+  sha = "h1:VTb7v6rFoSi184I3fVDSLFDeBxpGuDspwwoZxfnn4W4="
 }

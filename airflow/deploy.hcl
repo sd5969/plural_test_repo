@@ -49,7 +49,7 @@ step "kube-init" {
     "airflow",
   ]
 
-  sha = "059035dbf6bbeca9aa4bb9aba472c39b8259838651924acf510f91ad2c630358"
+  sha = "17ac6d98279333d38367f5c9966a9221a8e0ebba29cbfb85ec80e06f9b666ad4"
 }
 
 step "crds" {

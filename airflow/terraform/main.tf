@@ -1,7 +1,7 @@
 terraform {
 	backend "s3" {
 		bucket = "plural-testing-sanjit-tf-state"
-		key = "sanjit-test-cluster/bootstrap/terraform.tfstate"
+		key = "sanjit-test-cluster/airflow/terraform.tfstate"
 		region = "us-east-1"
 	}
 
@@ -22,11 +22,11 @@ provider "aws" {
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = module.aws-bootstrap.cluster_name
+  name = "sanjit-test-cluster"
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.aws-bootstrap.cluster_name
+  name = "sanjit-test-cluster"
 }
 
 provider "kubernetes" {
@@ -36,24 +36,16 @@ provider "kubernetes" {
 }
 
 
-module "aws-bootstrap" {
-  source = "./aws-bootstrap"
+module "aws" {
+  source = "./aws"
 
-### BEGIN MANUAL SECTION <<aws-bootstrap>>
+### BEGIN MANUAL SECTION <<aws>>
 
-### END MANUAL SECTION <<aws-bootstrap>>
+### END MANUAL SECTION <<aws>>
 
 
-  vpc_name = "test_vpc_for_plural"
-  dns_domain = "test.plural.sh"
   cluster_name = "sanjit-test-cluster"
-  
-  map_roles = [
-    {
-      rolearn = "arn:aws:iam::332124921534:role/sanjit-test-cluster-console"
-      username = "console"
-      groups = ["system:masters"]
-    }
-  ]
+  namespace = "airflow"
+  airflow_bucket = "plural-testing-sanjit-airflow"
 
 }

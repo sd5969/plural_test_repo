@@ -1,5 +1,5 @@
 metadata {
-  name = "bootstrap"
+  name = "airflow"
 }
 
 scaffold "terraform" {
@@ -13,7 +13,7 @@ scaffold "crds" {
 }
 
 scaffold "helm" {
-  path = "helm/bootstrap"
+  path = "helm/airflow"
   type = "helm"
 
   preflight "add-repo" {
@@ -24,11 +24,11 @@ scaffold "helm" {
     args = [
       "repo",
       "add",
-      "bootstrap",
-      "cm://app.plural.sh/cm/bootstrap",
+      "airflow",
+      "cm://app.plural.sh/cm/airflow",
     ]
 
-    sha = "280cd73dd26ad2abdd81765fb176a0314e7261a2022d7900b80ad354792c724a"
+    sha = "3573124d8d0726e76442fd705ffb78428f472e0373acf7bf7001fe5b971b866d"
   }
 
   preflight "update-deps" {
@@ -41,6 +41,6 @@ scaffold "helm" {
       "update",
     ]
 
-    sha = "280cd73dd26ad2abdd81765fb176a0314e7261a2022d7900b80ad354792c724a"
+    sha = "3573124d8d0726e76442fd705ffb78428f472e0373acf7bf7001fe5b971b866d"
   }
 }

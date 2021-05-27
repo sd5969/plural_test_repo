@@ -1,7 +1,7 @@
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: bootstrap
+  name: airflow
 spec:
   selector:
     matchLabels:
@@ -20,8 +20,8 @@ spec:
   - group: batch
     kind: Job
   descriptor:
-    type: bootstrap
-    version: 0.6.3
-    description: cluster initialization resources for plural
+    type: airflow
+    version: 0.1.38
+    description: DAG-based dependency-aware job scheduler
     icons:
-    - src: https://plural-assets.s3.us-east-2.amazonaws.com/uploads/repos/d1a82b07-b809-4eb4-b615-8f24365b72b8/k8s.png?v=63785590420
+    - src: https://plural-assets.s3.us-east-2.amazonaws.com/uploads/repos/eb88ca01-21d6-464f-8fd5-f481b385c166/airflow.png?v=63785592490

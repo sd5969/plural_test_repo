@@ -1,0 +1,4 @@
+dependencies:
+- name: airflow
+  version: 0.1.38
+  repository: cm://app.plural.sh/cm/airflow

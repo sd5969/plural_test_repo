@@ -1,3 +1,34 @@
+[0;33mconsole, console, Application (app.k8s.io) has changed:[0m
+  # Source: console/templates/application.yaml
+  apiVersion: app.k8s.io/v1beta1
+  kind: Application
+  metadata:
+    name: console
+  spec:
+    selector:
+      matchLabels:
+        app.kubernetes.io/managed-by: Helm
+    componentKinds:
+    - group: v1
+      kind: Service
+    - group: networking.k8s.io
+      kind: Ingress
+[0;32m+   - group: cert-manager.io[0m
+[0;32m+     kind: Certificate[0m
+    - group: apps
+      kind: StatefulSet
+    - group: apps
+      kind: Deployment
+    - group: batch
+      kind: CronJob
+    - group: batch
+      kind: Job
+    descriptor:
+      type: console
+      version: 0.5.9
+      description: plural admin console
+      icons:
+      - src: https://plural-assets.s3.us-east-2.amazonaws.com/uploads/repos/4d9e07ec-fd50-4bc2-80c5-55a8e29c8997/terminal-icon.png?v=63786497293
 [0;33mconsole, console, StatefulSet (apps) has changed:[0m
   # Source: console/charts/console/templates/statefulset.yaml
   apiVersion: apps/v1
@@ -43,8 +74,8 @@
           - name: HOST
             value: console.test.plural.sh
           - name: DEPLOYED_AT
-[0;31m-           value: "1622155483"[0m
-[0;32m+           value: "1622232705"[0m
+[0;31m-           value: "1622232706"[0m
+[0;32m+           value: "1622237435"[0m
           - name: NAMESPACE
             valueFrom:
               fieldRef:
@@ -96,12 +127,12 @@
         - name: console-conf
           secret:
             secretName: console-conf
-[0;33mconsole, console-migration-cmo5, Job (batch) has been removed:[0m
+[0;33mconsole, console-migration-h0ue, Job (batch) has been removed:[0m
 [0;31m- # Source: console/charts/console/templates/migration.yaml[0m
 [0;31m- apiVersion: batch/v1[0m
 [0;31m- kind: Job[0m
 [0;31m- metadata:[0m
-[0;31m-   name: console-migration-cmo5[0m
+[0;31m-   name: console-migration-h0ue[0m
 [0;31m- spec:[0m
 [0;31m-   template:[0m
 [0;31m-     spec:[0m
@@ -149,13 +180,13 @@
 [0;31m-       restartPolicy: Never[0m
 [0;31m-   backoffLimit: 5[0m
 [0;32m+ [0m
-[0;33mconsole, console-migration-9xja, Job (batch) has been added:[0m
+[0;33mconsole, console-migration-lr7w, Job (batch) has been added:[0m
 [0;31m- [0m
 [0;32m+ # Source: console/charts/console/templates/migration.yaml[0m
 [0;32m+ apiVersion: batch/v1[0m
 [0;32m+ kind: Job[0m
 [0;32m+ metadata:[0m
-[0;32m+   name: console-migration-9xja[0m
+[0;32m+   name: console-migration-lr7w[0m
 [0;32m+ spec:[0m
 [0;32m+   template:[0m
 [0;32m+     spec:[0m

@@ -1,0 +1,204 @@
+[0;33mconsole, console, StatefulSet (apps) has changed:[0m
+  # Source: console/charts/console/templates/statefulset.yaml
+  apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    name: console
+    labels:
+      app.kubernetes.io/name: console
+      helm.sh/chart: console-0.5.9
+      app.kubernetes.io/instance: console
+      app.kubernetes.io/version: "1.0"
+      app.kubernetes.io/managed-by: Helm
+  spec:
+    replicas: 2
+    serviceName: console-headless
+    selector:
+      matchLabels:
+        app.kubernetes.io/name: console
+        app.kubernetes.io/instance: console
+    template:
+      metadata:
+        labels:
+          app.kubernetes.io/name: console
+          app.kubernetes.io/instance: console
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/path: "/metrics"
+          prometheus.io/port: "4000"
+          checksum/config: e45ee9015221c030abf1e322526942e9cab641fc5edff9ca639e00b6ef63b921
+      spec:
+        serviceAccountName: console
+        imagePullSecrets:
+          - name: plural-creds
+        terminationGracePeriodSeconds: 30
+        containers:
+        - name: console
+          image: "dkr.plural.sh/console/console:0.1.0"
+          imagePullPolicy: Always
+          envFrom:
+          - secretRef:
+              name: console-env
+          env:
+          - name: HOST
+            value: console.test.plural.sh
+          - name: DEPLOYED_AT
+[0;31m-           value: "1622155483"[0m
+[0;32m+           value: "1622232705"[0m
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: REPLICAS
+            value: "2"
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: GRAFANA_DNS
+            value: 
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: console-postgresql
+                key: postgresql-password
+          volumeMounts:
+          - name: console-ssh
+            mountPath: "/root/.ssh"
+          - name: console-conf
+            mountPath: "/root/.plural"
+          ports:
+          - name: http
+            containerPort: 4000
+            protocol: TCP
+          - name: epmd
+            containerPort: 4369
+            protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          resources:
+              {}
+        volumes:
+        - name: console-ssh
+          secret:
+            defaultMode: 384
+            secretName: console-ssh
+        - name: console-conf
+          secret:
+            secretName: console-conf
+[0;33mconsole, console-migration-cmo5, Job (batch) has been removed:[0m
+[0;31m- # Source: console/charts/console/templates/migration.yaml[0m
+[0;31m- apiVersion: batch/v1[0m
+[0;31m- kind: Job[0m
+[0;31m- metadata:[0m
+[0;31m-   name: console-migration-cmo5[0m
+[0;31m- spec:[0m
+[0;31m-   template:[0m
+[0;31m-     spec:[0m
+[0;31m-       imagePullSecrets:[0m
+[0;31m-       - name: plural-creds[0m
+[0;31m-       containers:[0m
+[0;31m-       - name: migrator[0m
+[0;31m-         image: "dkr.plural.sh/console/console:0.1.0"[0m
+[0;31m-         command: ["/opt/app/bin/console",  "migrate"][0m
+[0;31m-         imagePullPolicy: Always[0m
+[0;31m-         envFrom:[0m
+[0;31m-         - secretRef:[0m
+[0;31m-             name: console-env[0m
+[0;31m-         - secretRef:[0m
+[0;31m-             name: console-migration-env[0m
+[0;31m-         env:[0m
+[0;31m-         - name: HOST[0m
+[0;31m-           value: console.test.plural.sh[0m
+[0;31m-         - name: NAMESPACE[0m
+[0;31m-           valueFrom:[0m
+[0;31m-             fieldRef:[0m
+[0;31m-               fieldPath: metadata.namespace[0m
+[0;31m-         - name: POD_IP[0m
+[0;31m-           valueFrom:[0m
+[0;31m-             fieldRef:[0m
+[0;31m-               fieldPath: status.podIP[0m
+[0;31m-         - name: POSTGRES_PASSWORD[0m
+[0;31m-           valueFrom:[0m
+[0;31m-             secretKeyRef:[0m
+[0;31m-               name: console-postgresql[0m
+[0;31m-               key: postgresql-password[0m
+[0;31m-         volumeMounts:[0m
+[0;31m-         - name: console-ssh[0m
+[0;31m-           mountPath: "/root/.ssh"[0m
+[0;31m-         - name: console-conf[0m
+[0;31m-           mountPath: "/root/.plural"[0m
+[0;31m-       volumes:[0m
+[0;31m-         - name: console-ssh[0m
+[0;31m-           secret:[0m
+[0;31m-             defaultMode: 384[0m
+[0;31m-             secretName: console-ssh[0m
+[0;31m-         - name: console-conf[0m
+[0;31m-           secret:[0m
+[0;31m-             secretName: console-conf[0m
+[0;31m-       restartPolicy: Never[0m
+[0;31m-   backoffLimit: 5[0m
+[0;32m+ [0m
+[0;33mconsole, console-migration-9xja, Job (batch) has been added:[0m
+[0;31m- [0m
+[0;32m+ # Source: console/charts/console/templates/migration.yaml[0m
+[0;32m+ apiVersion: batch/v1[0m
+[0;32m+ kind: Job[0m
+[0;32m+ metadata:[0m
+[0;32m+   name: console-migration-9xja[0m
+[0;32m+ spec:[0m
+[0;32m+   template:[0m
+[0;32m+     spec:[0m
+[0;32m+       imagePullSecrets:[0m
+[0;32m+       - name: plural-creds[0m
+[0;32m+       containers:[0m
+[0;32m+       - name: migrator[0m
+[0;32m+         image: "dkr.plural.sh/console/console:0.1.0"[0m
+[0;32m+         command: ["/opt/app/bin/console",  "migrate"][0m
+[0;32m+         imagePullPolicy: Always[0m
+[0;32m+         envFrom:[0m
+[0;32m+         - secretRef:[0m
+[0;32m+             name: console-env[0m
+[0;32m+         - secretRef:[0m
+[0;32m+             name: console-migration-env[0m
+[0;32m+         env:[0m
+[0;32m+         - name: HOST[0m
+[0;32m+           value: console.test.plural.sh[0m
+[0;32m+         - name: NAMESPACE[0m
+[0;32m+           valueFrom:[0m
+[0;32m+             fieldRef:[0m
+[0;32m+               fieldPath: metadata.namespace[0m
+[0;32m+         - name: POD_IP[0m
+[0;32m+           valueFrom:[0m
+[0;32m+             fieldRef:[0m
+[0;32m+               fieldPath: status.podIP[0m
+[0;32m+         - name: POSTGRES_PASSWORD[0m
+[0;32m+           valueFrom:[0m
+[0;32m+             secretKeyRef:[0m
+[0;32m+               name: console-postgresql[0m
+[0;32m+               key: postgresql-password[0m
+[0;32m+         volumeMounts:[0m
+[0;32m+         - name: console-ssh[0m
+[0;32m+           mountPath: "/root/.ssh"[0m
+[0;32m+         - name: console-conf[0m
+[0;32m+           mountPath: "/root/.plural"[0m
+[0;32m+       volumes:[0m
+[0;32m+         - name: console-ssh[0m
+[0;32m+           secret:[0m
+[0;32m+             defaultMode: 384[0m
+[0;32m+             secretName: console-ssh[0m
+[0;32m+         - name: console-conf[0m
+[0;32m+           secret:[0m
+[0;32m+             secretName: console-conf[0m
+[0;32m+       restartPolicy: Never[0m
+[0;32m+   backoffLimit: 5[0m

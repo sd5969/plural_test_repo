@@ -43,8 +43,8 @@
           - name: HOST
             value: console.test.plural.sh
           - name: DEPLOYED_AT
-[0;31m-           value: "1622241437"[0m
-[0;32m+           value: "1622246217"[0m
+[0;31m-           value: "1622246218"[0m
+[0;32m+           value: "1622249694"[0m
           - name: NAMESPACE
             valueFrom:
               fieldRef:
@@ -96,12 +96,12 @@
         - name: console-conf
           secret:
             secretName: console-conf
-[0;33mconsole, console-migration-3hmn, Job (batch) has been removed:[0m
+[0;33mconsole, console-migration-n0wq, Job (batch) has been removed:[0m
 [0;31m- # Source: console/charts/console/templates/migration.yaml[0m
 [0;31m- apiVersion: batch/v1[0m
 [0;31m- kind: Job[0m
 [0;31m- metadata:[0m
-[0;31m-   name: console-migration-3hmn[0m
+[0;31m-   name: console-migration-n0wq[0m
 [0;31m- spec:[0m
 [0;31m-   template:[0m
 [0;31m-     spec:[0m
@@ -149,13 +149,13 @@
 [0;31m-       restartPolicy: Never[0m
 [0;31m-   backoffLimit: 5[0m
 [0;32m+ [0m
-[0;33mconsole, console-migration-5ipv, Job (batch) has been added:[0m
+[0;33mconsole, console-migration-4xsg, Job (batch) has been added:[0m
 [0;31m- [0m
 [0;32m+ # Source: console/charts/console/templates/migration.yaml[0m
 [0;32m+ apiVersion: batch/v1[0m
 [0;32m+ kind: Job[0m
 [0;32m+ metadata:[0m
-[0;32m+   name: console-migration-5ipv[0m
+[0;32m+   name: console-migration-4xsg[0m
 [0;32m+ spec:[0m
 [0;32m+   template:[0m
 [0;32m+     spec:[0m

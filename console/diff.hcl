@@ -8,7 +8,7 @@ step "terraform-init" {
   target  = "console/terraform"
   command = "terraform"
   args    = ["init"]
-  sha     = "h1:ahY9gWTHOXTYZ9U0UTX+buZOpoEvv4AWGCylfkR/lIM="
+  sha     = ""
 }
 
 step "terraform" {
@@ -22,7 +22,7 @@ step "terraform" {
     "console",
   ]
 
-  sha = "h1:ahY9gWTHOXTYZ9U0UTX+buZOpoEvv4AWGCylfkR/lIM="
+  sha = ""
 }
 
 step "kube-init" {
@@ -36,7 +36,7 @@ step "kube-init" {
     "console",
   ]
 
-  sha = "37ea43ad21858da62f95441942044460dd6d57d8802d91dfc37907059166f39b"
+  sha = ""
 }
 
 step "helm" {
@@ -50,5 +50,5 @@ step "helm" {
     "console",
   ]
 
-  sha = "h1:GsdCBLQND4VpCBLpw76dMTdrUQhIAmTBe3aUPQ1Ogbw="
+  sha = ""
 }

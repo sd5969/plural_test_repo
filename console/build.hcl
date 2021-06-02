@@ -28,7 +28,7 @@ scaffold "helm" {
       "cm://app.plural.sh/cm/console",
     ]
 
-    sha = "3811eab3459f3158465793fb6fc41415908d61f7f8d82c5dba4e36f2d30bdd32"
+    sha = "1f7f3807894345ea6bc516aef33bd1c3d655094bd086b3344e305bad04ebe6c2"
   }
 
   preflight "update-deps" {
@@ -41,6 +41,6 @@ scaffold "helm" {
       "update",
     ]
 
-    sha = "3811eab3459f3158465793fb6fc41415908d61f7f8d82c5dba4e36f2d30bdd32"
+    sha = "1f7f3807894345ea6bc516aef33bd1c3d655094bd086b3344e305bad04ebe6c2"
   }
 }
